@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gowtham Srikar Thiragati — Salesforce CRM Professional</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0e0e0e;--bg2:#161616;--bg3:#1e1e1e;--border:#2a2a2a;--green:#22c55e;--green-dim:#16a34a;--green-bg:rgba(34,197,94,0.06);--white:#f5f5f5;--muted:#888;--faint:#444;}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--white);line-height:1.7;overflow-x:hidden;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(14,14,14,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 2rem;height:56px;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;color:var(--white);}
+.nav-logo span{color:var(--green);}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{text-decoration:none;color:var(--muted);font-size:0.82rem;font-weight:500;letter-spacing:0.04em;transition:color 0.2s;}
+.nav-links a:hover{color:var(--green);}
+.hero{min-height:100vh;display:flex;align-items:center;padding:7rem 2rem 4rem;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse 60% 50% at 70% 30%,rgba(34,197,94,0.07) 0%,transparent 70%),radial-gradient(ellipse 40% 40% at 20% 80%,rgba(34,197,94,0.04) 0%,transparent 60%);pointer-events:none;}
+.hero-inner{max-width:1100px;margin:0 auto;width:100%;position:relative;z-index:1;}
+.hero-eyebrow{display:flex;align-items:center;gap:0.75rem;margin-bottom:1.75rem;animation:fadeUp 0.5s ease both;}
+.hero-eyebrow-line{width:32px;height:1px;background:var(--green);}
+.hero-eyebrow-text{font-size:0.75rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--green);}
+.hero h1{font-family:'Syne',sans-serif;font-size:clamp(3rem,7vw,5.5rem);font-weight:800;line-height:1.0;letter-spacing:-0.03em;color:var(--white);margin-bottom:1.5rem;animation:fadeUp 0.5s 0.08s ease both;}
+.hero h1 .green{color:var(--green);}
+.hero-desc{font-size:1.05rem;color:var(--muted);max-width:520px;font-weight:300;line-height:1.75;margin-bottom:3rem;animation:fadeUp 0.5s 0.16s ease both;}
+.hero-stats{display:flex;gap:0;border:1px solid var(--border);border-radius:12px;overflow:hidden;max-width:580px;animation:fadeUp 0.5s 0.24s ease both;}
+.stat{flex:1;padding:1.25rem 1rem;border-right:1px solid var(--border);text-align:center;}
+.stat:last-child{border-right:none;}
+.stat-n{font-family:'Syne',sans-serif;font-size:1.75rem;font-weight:800;color:var(--green);line-height:1;margin-bottom:0.3rem;}
+.stat-l{font-size:0.7rem;color:var(--faint);text-transform:uppercase;letter-spacing:0.08em;font-weight:500;}
+section{padding:5rem 2rem;}
+.sec{max-width:1100px;margin:0 auto;}
+.sec-eyebrow{display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;}
+.sec-eyebrow-line{width:20px;height:1px;background:var(--green);}
+.sec-label{font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--green);}
+.sec-title{font-family:'Syne',sans-serif;font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;color:var(--white);letter-spacing:-0.02em;margin-bottom:2.5rem;line-height:1.2;}
+#skills{background:var(--bg2);}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem;}
+.skill-card{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:1.5rem;transition:border-color 0.2s,transform 0.2s;}
+.skill-card:hover{border-color:var(--green-dim);transform:translateY(-2px);}
+.skill-card-title{font-family:'Syne',sans-serif;font-size:0.9rem;font-weight:600;color:var(--white);margin-bottom:1rem;}
+.skill-tags{display:flex;flex-wrap:wrap;gap:0.4rem;}
+.skill-tag{background:var(--bg);border:1px solid var(--border);color:var(--muted);font-size:0.75rem;padding:0.22rem 0.6rem;border-radius:100px;font-weight:400;transition:all 0.15s;}
+.skill-tag:hover{border-color:var(--green-dim);color:var(--green);}
+#projects{background:var(--bg);}
+.projects-stack{display:flex;flex-direction:column;gap:1.5rem;}
+.proj{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:2rem;transition:border-color 0.2s,transform 0.2s;position:relative;overflow:hidden;}
+.proj::after{content:'';position:absolute;top:0;left:0;width:3px;height:100%;}
+.proj.p1::after{background:var(--green);}
+.proj.p2::after{background:#3b82f6;}
+.proj.p3::after{background:#f59e0b;}
+.proj:hover{border-color:#333;transform:translateY(-2px);}
+.proj-top{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;margin-bottom:0.4rem;flex-wrap:wrap;}
+.proj-title{font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:700;color:var(--white);letter-spacing:-0.01em;}
+.proj-right{display:flex;align-items:center;gap:0.75rem;flex-shrink:0;}
+.proj-badge{font-size:0.7rem;font-weight:600;padding:0.22rem 0.65rem;border-radius:100px;letter-spacing:0.05em;text-transform:uppercase;}
+.badge-green{background:var(--green-bg);color:var(--green);border:1px solid rgba(34,197,94,0.2);}
+.badge-blue{background:rgba(59,130,246,0.08);color:#60a5fa;border:1px solid rgba(59,130,246,0.2);}
+.badge-amber{background:rgba(245,158,11,0.08);color:#fbbf24;border:1px solid rgba(245,158,11,0.2);}
+.proj-date{font-size:0.78rem;color:var(--faint);}
+.proj-platform{font-size:0.8rem;color:var(--faint);margin-bottom:1.25rem;}
+.proj-bullets{list-style:none;display:flex;flex-direction:column;gap:0.55rem;}
+.proj-bullets li{font-size:0.875rem;color:#aaa;padding-left:1.25rem;position:relative;line-height:1.65;font-weight:300;}
+.proj-bullets li::before{content:'→';position:absolute;left:0;color:var(--green);font-size:0.75rem;top:0.08rem;}
+#certifications{background:var(--bg2);}
+.certs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;}
+.cert{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:1.25rem;display:flex;gap:0.875rem;align-items:flex-start;transition:border-color 0.2s;}
+.cert:hover{border-color:var(--green-dim);}
+.ci{width:8px;height:8px;border-radius:50%;margin-top:0.45rem;flex-shrink:0;}
+.ci-green{background:var(--green);box-shadow:0 0 6px rgba(34,197,94,0.5);}
+.ci-amber{background:#f59e0b;}
+.ci-blue{background:#3b82f6;}
+.ci-faint{background:transparent;border:1.5px solid var(--faint);width:7px;height:7px;margin-top:0.5rem;}
+.cert-name{font-family:'Syne',sans-serif;font-size:0.875rem;font-weight:600;color:var(--white);margin-bottom:0.2rem;line-height:1.3;}
+.cert-meta{font-size:0.775rem;color:var(--faint);}
+.cert-note{font-size:0.72rem;color:#555;margin-top:0.2rem;font-style:italic;}
+#education{background:var(--bg);}
+.edu-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:1.5rem 1.75rem;max-width:480px;display:flex;gap:1rem;align-items:flex-start;}
+.edu-dot{width:8px;height:8px;border-radius:50%;background:var(--green);margin-top:0.45rem;flex-shrink:0;box-shadow:0 0 6px rgba(34,197,94,0.5);}
+.edu-degree{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--white);margin-bottom:0.3rem;}
+.edu-school{font-size:0.82rem;color:var(--muted);margin-bottom:0.2rem;}
+.edu-year{font-size:0.78rem;color:var(--faint);}
+#contact{background:var(--bg2);}
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;}
+.contact-link{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:1.25rem 1.5rem;text-decoration:none;display:block;transition:all 0.2s;}
+.contact-link:hover{border-color:var(--green-dim);transform:translateY(-2px);}
+.contact-link-label{font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--faint);margin-bottom:0.4rem;font-weight:600;}
+.contact-link-value{font-size:0.875rem;color:var(--muted);font-weight:400;word-break:break-all;transition:color 0.2s;}
+.contact-link:hover .contact-link-value{color:var(--green);}
+footer{background:var(--bg);border-top:1px solid var(--border);padding:1.5rem 2rem;text-align:center;font-size:0.78rem;color:var(--faint);}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+.fi{opacity:1;transform:translateY(0);transition:opacity 0.5s ease,transform 0.5s ease;}
+.fi.vis{opacity:1;transform:translateY(0);}
+.fi.anim-ready{opacity:0;transform:translateY(14px);}
+@media(max-width:640px){.nav-links{display:none;}.hero-stats{flex-direction:column;max-width:100%;}.stat{border-right:none;border-bottom:1px solid var(--border);}.stat:last-child{border-bottom:none;}.proj-top{flex-direction:column;gap:0.5rem;}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo">Gowtham<span>.</span></div>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow"><div class="hero-eyebrow-line"></div><div class="hero-eyebrow-text">Salesforce CRM Professional</div></div>
+    <h1>Gowtham Srikar<br><span class="green">Thiragati</span></h1>
+    <p class="hero-desc">Building declarative CRM automation, custom data models, and end-to-end workflow systems on Salesforce. No code — just clear thinking and precise configuration.</p>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-n">3</div><div class="stat-l">Live Projects</div></div>
+      <div class="stat"><div class="stat-n">84</div><div class="stat-l">Trailhead Badges</div></div>
+      <div class="stat"><div class="stat-n">3+</div><div class="stat-l">Certifications</div></div>
+      <div class="stat"><div class="stat-n">'26</div><div class="stat-l">Agentblazer</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="sec">
+    <div class="sec-eyebrow"><div class="sec-eyebrow-line"></div><span class="sec-label">What I Work With</span></div>
+    <h2 class="sec-title">Technical Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-card fi">
+        <div class="skill-card-title">Salesforce CRM</div>
+        <div class="skill-tags"><span class="skill-tag">Custom Objects</span><span class="skill-tag">Flow Builder</span><span class="skill-tag">Scheduled Paths</span><span class="skill-tag">Screen Flows</span><span class="skill-tag">Validation Rules</span><span class="skill-tag">Roll-Up Summary</span><span class="skill-tag">Formula Fields</span><span class="skill-tag">Lightning App Builder</span><span class="skill-tag">Reports & Dashboards</span><span class="skill-tag">Data Security</span><span class="skill-tag">Profiles & Roles</span></div>
+      </div>
+      <div class="skill-card fi">
+        <div class="skill-card-title">Marketing Automation</div>
+        <div class="skill-tags"><span class="skill-tag">HubSpot CRM</span><span class="skill-tag">Email Campaigns</span><span class="skill-tag">Contact Segmentation</span><span class="skill-tag">Lead Lifecycle</span><span class="skill-tag">Engagement Tracking</span><span class="skill-tag">A/B Testing</span><span class="skill-tag">Drip Sequences</span></div>
+      </div>
+      <div class="skill-card fi">
+        <div class="skill-card-title">Tools & Other</div>
+        <div class="skill-tags"><span class="skill-tag">SQL</span><span class="skill-tag">Excel</span><span class="skill-tag">Tableau</span><span class="skill-tag">Python (basic)</span><span class="skill-tag">Figma</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="sec">
+    <div class="sec-eyebrow"><div class="sec-eyebrow-line"></div><span class="sec-label">What I've Built</span></div>
+    <h2 class="sec-title">Projects</h2>
+    <div class="projects-stack">
+
+      <div class="proj p1 fi">
+        <div class="proj-top"><div class="proj-title">MediTrack — Healthcare Patient Management CRM</div><div class="proj-right"><span class="proj-badge badge-green">Healthcare</span><span class="proj-date">April 2026</span></div></div>
+        <div class="proj-platform">Salesforce Developer Edition Org</div>
+        <ul class="proj-bullets">
+          <li>Designed and built a healthcare CRM managing the full patient lifecycle — objects covering Departments, Doctors, Patients, Appointments, and Treatment Records with formula fields, roll-up summaries, and cross-object relationships.</li>
+          <li>Automated clinical workflows using Flow Builder — scheduled appointment reminders, a no-show handler, an auto-create follow-up flow triggered by treatment outcomes, and a multi-path critical severity escalation that fires immediately and rechecks after 24 hours.</li>
+          <li>Built a guided patient registration Screen Flow creating both Patient and Appointment records simultaneously, enforced data quality through validation rules, and delivered an operations dashboard across appointment, no-show, department, and severity reports.</li>
+        </ul>
+      </div>
+
+      <div class="proj p2 fi">
+        <div class="proj-top"><div class="proj-title">Job Application Tracker CRM</div><div class="proj-right"><span class="proj-badge badge-blue">CRM</span><span class="proj-date">March 2026</span></div></div>
+        <div class="proj-platform">Salesforce Developer Edition Org</div>
+        <ul class="proj-bullets">
+          <li>Built a fully functional CRM from scratch — custom objects covering Job Postings, Applications, Recruiter Contacts, and Interviews with formula fields, roll-up summaries, and master-detail relationships forming a complete relational data model.</li>
+          <li>Automated the pipeline using Flow Builder — a scheduled follow-up reminder on Last Modified Date, a record-triggered flow auto-creating an Interview record on status change, and a guided Screen Flow for structured data entry.</li>
+          <li>Enforced data quality through validation rules and delivered a live dashboard combining status, source analysis, and weekly volume reports — actively used to track all job applications.</li>
+        </ul>
+      </div>
+
+      <div class="proj p3 fi">
+        <div class="proj-top"><div class="proj-title">End-to-End Email Campaign and Lead Management</div><div class="proj-right"><span class="proj-badge badge-amber">Marketing Automation</span><span class="proj-date">December 2025</span></div></div>
+        <div class="proj-platform">HubSpot CRM</div>
+        <ul class="proj-bullets">
+          <li>Executed a full B2C email marketing campaign — structured contact data, built behavioural segments, and delivered a drip sequence across Cold, Warm, and Hot Lead segments with high open and click rates.</li>
+          <li>Managed lead lifecycle from contact import through deal creation — updated lifecycle stages for high-intent contacts demonstrating full marketing-to-sales handoff inside a CRM platform.</li>
+          <li>Designed personalised email templates with tokens and CTAs simulating Salesforce Marketing Cloud dynamic content personalisation logic.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="certifications">
+  <div class="sec">
+    <div class="sec-eyebrow"><div class="sec-eyebrow-line"></div><span class="sec-label">Credentials</span></div>
+    <h2 class="sec-title">Certifications</h2>
+    <div class="certs-grid">
+      <div class="cert fi"><div class="ci ci-green"></div><div><div class="cert-name">Salesforce Agentblazer Champion 2026</div><div class="cert-meta">Salesforce Trailhead · March 2026</div></div></div>
+      <div class="cert fi"><div class="ci ci-green"></div><div><div class="cert-name">HubSpot Email Marketing Certification</div><div class="cert-meta">HubSpot Academy · 2025</div></div></div>
+      <div class="cert fi"><div class="ci ci-amber"></div><div><div class="cert-name">Salesforce AI Associate</div><div class="cert-meta">Salesforce · December 2024</div><div class="cert-note">Retired Feb 2026 — replaced by Agentblazer pathway</div></div></div>
+      <div class="cert fi"><div class="ci ci-blue"></div><div><div class="cert-name">Salesforce Platform Training</div><div class="cert-meta">Trailhead · 2023–2026</div><div class="cert-note">Apex Specialist · Process Automation · Developer Superset · 84 badges</div></div></div>
+      <div class="cert fi"><div class="ci ci-faint"></div><div><div class="cert-name">Salesforce MC Email Specialist</div><div class="cert-meta">In Progress</div></div></div>
+      <div class="cert fi"><div class="ci ci-faint"></div><div><div class="cert-name">Salesforce Administrator (ADM-201)</div><div class="cert-meta">In Progress</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="sec">
+    <div class="sec-eyebrow"><div class="sec-eyebrow-line"></div><span class="sec-label">Academic Background</span></div>
+    <h2 class="sec-title">Education</h2>
+    <div class="edu-card fi">
+      <div class="edu-dot"></div>
+      <div><div class="edu-degree">B.Tech — Computer Science Engineering</div><div class="edu-school">Kakinada Institute of Engineering and Technology (KIET), JNTU Kakinada</div><div class="edu-year">2021 — 2025</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="sec">
+    <div class="sec-eyebrow"><div class="sec-eyebrow-line"></div><span class="sec-label">Get In Touch</span></div>
+    <h2 class="sec-title">Let's Connect</h2>
+    <div class="contact-grid">
+      <a href="mailto:gowthamthiragati@gmail.com" class="contact-link fi"><div class="contact-link-label">Email</div><div class="contact-link-value">gowthamthiragati@gmail.com</div></a>
+      <a href="https://www.linkedin.com/in/gowtham-srikar-1317b6228/" target="_blank" class="contact-link fi"><div class="contact-link-label">LinkedIn</div><div class="contact-link-value">linkedin.com/in/gowtham-srikar</div></a>
+      <a href="https://www.salesforce.com/trailblazer/gowthamsrikar" target="_blank" class="contact-link fi"><div class="contact-link-label">Trailhead</div><div class="contact-link-value">trailblazer/gowthamsrikar</div></a>
+    </div>
+  </div>
+</section>
+
+<footer>Gowtham Srikar Thiragati — Salesforce CRM Professional — 2026</footer>
+
+<script>
+const obs=new Intersecti
